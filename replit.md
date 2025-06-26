@@ -40,6 +40,12 @@ The application follows a modular Python architecture with clear separation of c
 - Implements automatic cleanup of old transactions
 - Tracks replacement statistics and transaction lifecycle
 
+### TransactionReplacer
+- Creates replacement transactions with higher fees
+- Analyzes replacement potential and suggests fee strategies
+- Validates replacement transactions against BIP 125 rules
+- Provides multiple fee increase strategies (conservative, moderate, aggressive, priority)
+
 ### DisplayManager
 - Provides real-time terminal interface
 - Shows monitoring statistics and RBF detection results
@@ -55,6 +61,7 @@ The application follows a modular Python architecture with clear separation of c
 5. **Replacement Detection**: Ongoing monitoring for transaction replacements
 6. **Display Updates**: Real-time terminal output of monitoring results
 7. **Cleanup**: Automatic removal of old/confirmed transactions
+8. **Transaction Replacement**: Create higher-fee replacements for RBF transactions
 
 ## External Dependencies
 
@@ -96,6 +103,9 @@ The application is designed for Replit deployment with the following characteris
 Changelog:
 - June 26, 2025. Initial setup
 - June 26, 2025. Enhanced display with USD/BTC amounts and clear screen formatting
+- June 26, 2025. Added transaction replacement functionality with TransactionReplacer module
+- June 26, 2025. Created RBF CLI tool and interactive replacement interface
+- June 26, 2025. Integrated replacement features with existing monitoring system
 ```
 
 ## User Preferences

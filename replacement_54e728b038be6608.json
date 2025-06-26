@@ -1,0 +1,56 @@
+{
+  "success": true,
+  "original_txid": "54e728b038be66086a2c85e2db389963a1d9df58cadade8ea61aa52201af7f93",
+  "replacement_transaction": {
+    "version": 2,
+    "locktime": 902648,
+    "vin": [
+      {
+        "txid": "8628968d593d7074ff8391b5ed0f20515a074ae013bf0e0281ccf55d03e97aef",
+        "vout": 1,
+        "prevout": {
+          "scriptpubkey": "001409591fb1a1cc4039c0753c67205cba57e82ef144",
+          "scriptpubkey_asm": "OP_0 OP_PUSHBYTES_20 09591fb1a1cc4039c0753c67205cba57e82ef144",
+          "scriptpubkey_type": "v0_p2wpkh",
+          "scriptpubkey_address": "bc1qp9v3lvdpe3qrnsr483njqh962l5zau2y5ufhuw",
+          "value": 134300
+        },
+        "scriptsig": "",
+        "scriptsig_asm": "",
+        "witness": [
+          "304402206ea3c8a793562b45771db73ece749abe9fb2bfefb31ddaaf33bd440afaf7b75e02204aef296a134e97584eb0bf2fb7d046047616a15a2384ac13795d150ee90f657701",
+          "026c0d08ee2afb9fd3a82f378675a1b9874d8f35e8de8e7a3558828d34db4095be"
+        ],
+        "is_coinbase": false,
+        "sequence": 4294967293
+      }
+    ],
+    "vout": [
+      {
+        "scriptpubkey": "76a914594eed86dd0f43489fa2af0da0d58cc78bf5d62988ac",
+        "scriptpubkey_asm": "OP_DUP OP_HASH160 OP_PUSHBYTES_20 594eed86dd0f43489fa2af0da0d58cc78bf5d629 OP_EQUALVERIFY OP_CHECKSIG",
+        "scriptpubkey_type": "p2pkh",
+        "scriptpubkey_address": "199Dh5NLkUtRycZC4ayYxzx2Mss6spsAnY",
+        "value": 2025
+      },
+      {
+        "scriptpubkey": "0014f4c0b59466944960ed663a718e6d3ed862ad5b8c",
+        "scriptpubkey_asm": "OP_0 OP_PUSHBYTES_20 f4c0b59466944960ed663a718e6d3ed862ad5b8c",
+        "scriptpubkey_type": "v0_p2wpkh",
+        "scriptpubkey_address": "bc1q7nqtt9rxj3ykpmtx8fccumf7mp326kuvmq6t7s",
+        "value": 131006
+      }
+    ]
+  },
+  "strategy_used": {
+    "name": "moderate",
+    "new_fee_rate": 5.64,
+    "new_total_fee": 1269,
+    "fee_increase": 1125,
+    "description": "Moderate replacement: 5.64 sat/vB"
+  },
+  "fee_increase": 1125,
+  "new_fee_rate": 5.64,
+  "signing_required": true,
+  "warning": "Transaction created but requires signing with private keys"
+}

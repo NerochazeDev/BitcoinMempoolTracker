@@ -9,6 +9,7 @@ import requests
 from typing import Dict, Set, Optional
 from rbf_detector import RBFDetector
 from transaction_tracker import TransactionTracker
+from transaction_replacer import TransactionReplacer
 from display_manager import DisplayManager
 from config import Config
 
@@ -20,6 +21,7 @@ class MempoolMonitor:
         self.display = display_manager
         self.rbf_detector = RBFDetector()
         self.tracker = TransactionTracker()
+        self.replacer = TransactionReplacer()
         self.config = Config()
         
         # Track seen transactions to detect new ones
@@ -165,3 +167,27 @@ class MempoolMonitor:
                 backoff_time = min(60, 2 ** consecutive_failures)
                 self.logger.warning(f"Backing off for {backoff_time} seconds after failure {consecutive_failures}")
                 time.sleep(backoff_time)
+    
+    def analyze_transaction_for_replacement(self, txid: str) -> Optional[Dict]:
+        """Analyze a specific transaction for replacement potential"""
+        try:
+            tx_data = self.get_transaction_details(txid)
+            if not tx_data:
+                return None
+            
+            return self.replacer.analyze_replacement_potential(tx_data)
+        except Exception as e:
+            self.logger.error(f"Error analyzing transaction {txid}: {e}")
+            return None
+    
+    def create_replacement_for_transaction(self, txid: str, strategy: str = 'moderate') -> Optional[Dict]:
+        """Create a replacement transaction for the given txid"""
+        try:
+            tx_data = self.get_transaction_details(txid)
+            if not tx_data:
+                return None
+            
+            return self.replacer.create_replacement_transaction(tx_data, strategy)
+        except Exception as e:
+            self.logger.error(f"Error creating replacement for {txid}: {e}")
+            return None
