@@ -1,0 +1,36 @@
+modules = ["python-3.11"]
+
+[nix]
+channel = "stable-24_05"
+
+[workflows]
+runButton = "Project"
+
+[[workflows.workflow]]
+name = "Project"
+mode = "parallel"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Bitcoin RBF Monitor"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "bitcoin_rbf_monitor"
+
+[[workflows.workflow]]
+name = "Bitcoin RBF Monitor"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "pip install requests && python main.py"
+
+[[workflows.workflow]]
+name = "bitcoin_rbf_monitor"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "pip install requests && python main.py"
