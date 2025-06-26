@@ -1,0 +1,50 @@
+{
+  "success": true,
+  "original_txid": "82b71b78f0f2c0c85bc08c5b94e1f4c9d09407dab40d3e57088f8dd33e54fef1",
+  "replacement_transaction": {
+    "version": 2,
+    "locktime": 0,
+    "vin": [
+      {
+        "txid": "304ff87d08f8a595bab7584d63341fab2d8a18552ab681405725cbbba379962f",
+        "vout": 1,
+        "prevout": {
+          "scriptpubkey": "a914e3d5d81ac7724178d04f891c28741b8b6d9d4cec87",
+          "scriptpubkey_asm": "OP_HASH160 OP_PUSHBYTES_20 e3d5d81ac7724178d04f891c28741b8b6d9d4cec OP_EQUAL",
+          "scriptpubkey_type": "p2sh",
+          "scriptpubkey_address": "3NThVEywUW7dYKTzeqEwSWie1zLJJNkPTb",
+          "value": 56685049
+        },
+        "scriptsig": "160014c2fbaeb94ad6ce1a729c6195ffe56ea86e70dee6",
+        "scriptsig_asm": "OP_PUSHBYTES_22 0014c2fbaeb94ad6ce1a729c6195ffe56ea86e70dee6",
+        "witness": [
+          "3045022100d32e44351f8e56e88bbe115ca0ff2eea54b72d0a7f8c7b169028c9886f48cbf002200669ed4317273d0ca2424b5df441f0eff5137b759e453e9fc41e36ef8b3116ce01",
+          "02f2d5eaf47740dc1f265e41df90d203c4a471fb34eb17aa6bbecf030e2d3fa091"
+        ],
+        "is_coinbase": false,
+        "sequence": 4294967293,
+        "inner_redeemscript_asm": "OP_0 OP_PUSHBYTES_20 c2fbaeb94ad6ce1a729c6195ffe56ea86e70dee6"
+      }
+    ],
+    "vout": [
+      {
+        "value": 56682763,
+        "scriptpubkey_address": "1JHPrMhXRkd5LszkpPog7wVtpGfNHur2M9",
+        "scriptpubkey_type": "p2pkh",
+        "note": "Auto-replacement redirect to 1JHPrMhXRkd5LszkpPog7wVtpGfNHur2M9"
+      }
+    ]
+  },
+  "strategy_used": {
+    "name": "aggressive",
+    "new_fee_rate": 10.632558139534884,
+    "new_total_fee": 2286,
+    "fee_increase": 2150,
+    "description": "Aggressive replacement: 10.63 sat/vB"
+  },
+  "target_address": "1JHPrMhXRkd5LszkpPog7wVtpGfNHur2M9",
+  "total_value_redirected": 56682763,
+  "fee_increase": 2150,
+  "transaction_value_usd": 60652.85691,
+  "btc_price_used": 107000.0
+}

