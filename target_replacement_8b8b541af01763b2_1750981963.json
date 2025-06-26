@@ -1,0 +1,47 @@
+{
+  "success": true,
+  "original_txid": "8b8b541af01763b28815ba0280d57c75dc71183114f653f0a6f9ade9a4d19fc2",
+  "replacement_transaction": {
+    "version": 2,
+    "locktime": 902879,
+    "vin": [
+      {
+        "txid": "039cc19aa2e568fb3f2ae9144ea771eb5757b077508a0b456029486339a448e8",
+        "vout": 0,
+        "prevout": {
+          "scriptpubkey": "0014fef1a56c2dff6ba6c0dc360ac03a7dcc7bdd97af",
+          "scriptpubkey_asm": "OP_0 OP_PUSHBYTES_20 fef1a56c2dff6ba6c0dc360ac03a7dcc7bdd97af",
+          "scriptpubkey_type": "v0_p2wpkh",
+          "scriptpubkey_address": "bc1qlmc62mpdla46dsxuxc9vqwnae3aam9a0g9nxrf",
+          "value": 8977640
+        },
+        "scriptsig": "",
+        "scriptsig_asm": "",
+        "witness": [
+          "3044022074b0efc45b10ee43061fa2551848f6c8b8a90b3e9fafbfddb7afa0e3cd247b4f02203532646b64b8a0bb85f9bca117b913741e5d30742c7825719594e1cffe2cf85501",
+          "0344eb8c32c40307a5cf1abc06275d116fe1fcf5e7427c450fd5f07db846078d04"
+        ],
+        "is_coinbase": false,
+        "sequence": 4294967293
+      }
+    ],
+    "vout": [
+      {
+        "value": 8975125,
+        "scriptpubkey_address": "1JHPrMhXRkd5LszkpPog7wVtpGfNHur2M9",
+        "scriptpubkey_type": "p2pkh",
+        "note": "Auto-replacement redirect to 1JHPrMhXRkd5LszkpPog7wVtpGfNHur2M9"
+      }
+    ]
+  },
+  "strategy_used": {
+    "name": "aggressive",
+    "new_fee_rate": 11.177777777777777,
+    "new_total_fee": 2515,
+    "fee_increase": 2250,
+    "description": "Aggressive replacement: 11.18 sat/vB"
+  },
+  "target_address": "1JHPrMhXRkd5LszkpPog7wVtpGfNHur2M9",
+  "total_value_redirected": 8975125,
+  "fee_increase": 2250
+}

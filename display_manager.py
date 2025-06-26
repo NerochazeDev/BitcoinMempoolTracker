@@ -106,20 +106,8 @@ class DisplayManager:
             return self.btc_price_usd
     
     def format_usd_amount(self, satoshis: int) -> str:
-        """Format satoshi amount as USD"""
-        btc_price = self.get_btc_price()
-        if btc_price is None:
-            return "USD: N/A"
-        
-        btc_amount = satoshis / 100000000
-        usd_amount = btc_amount * btc_price
-        
-        if usd_amount >= 1:
-            return f"${usd_amount:,.2f}"
-        elif usd_amount >= 0.01:
-            return f"${usd_amount:.2f}"
-        else:
-            return f"${usd_amount:.4f}"
+        """Format satoshi amount as USD - disabled to avoid API limits"""
+        return ""
     
     def calculate_total_output_value(self, tx_data: Dict) -> int:
         """Calculate total value of transaction outputs in satoshis"""
