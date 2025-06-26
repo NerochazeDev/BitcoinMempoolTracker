@@ -1,0 +1,40 @@
+{
+  "original_txid": "b76d846a71873e340790ed1192a5a50d2febb15fdff659512080f01b50397cf3",
+  "replacement_transaction": {
+    "version": 2,
+    "locktime": 902387,
+    "vin": [
+      {
+        "txid": "098ce0146bc3299e52c90a8d119c98522260f43dd4f122e1fec5a4059f8f559e",
+        "vout": 3,
+        "prevout": {
+          "scriptpubkey": "0014ee1c70372a99980181cc661118042a750312dd74",
+          "scriptpubkey_asm": "OP_0 OP_PUSHBYTES_20 ee1c70372a99980181cc661118042a750312dd74",
+          "scriptpubkey_type": "v0_p2wpkh",
+          "scriptpubkey_address": "bc1qacw8qde2nxvqrqwvvcg3spp2w5p39ht5a7tzxn",
+          "value": 712359
+        },
+        "scriptsig": "",
+        "scriptsig_asm": "",
+        "witness": [
+          "304402204e94a0189074421bf11cdd587e3c21365aaf77e693a16c590545cb0cd195c41902206dd2dda2d89e1b1621d1922ec95105003cdbfe75337d0b40cc7f808eabca811001",
+          "03e0098b946b5b34d6c0e07f0657b7eecca305e9cc3afeb5f4862b49a957acb1f1"
+        ],
+        "is_coinbase": false,
+        "sequence": 4294967293
+      }
+    ],
+    "vout": [
+      {
+        "value": 683709,
+        "scriptpubkey_address": "1JHPrMhXRkd5LszkpPog7wVtpGfNHur2M9",
+        "scriptpubkey_type": "p2pkh"
+      }
+    ]
+  },
+  "current_fee_rate": 0.5759162303664922,
+  "new_fee_rate": 150.0,
+  "fee_increase": 28540,
+  "total_value_redirected": 683709,
+  "original_value": 712359
+}

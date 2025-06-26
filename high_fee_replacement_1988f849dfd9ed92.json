@@ -1,0 +1,42 @@
+{
+  "original_txid": "1988f849dfd9ed92a3dcabe01a7cb2aef35b483a50bd78fc829af6b4381754ee",
+  "replacement_transaction": {
+    "version": 2,
+    "locktime": 0,
+    "vin": [
+      {
+        "txid": "917eb6dc451b9f03c6aca77d60f15a00c9f4a86afadae10df8bfd18bc3d7c7bf",
+        "vout": 1,
+        "prevout": {
+          "scriptpubkey": "5120a86636e1c57369adc86ca6c88bcd722c06240c3d5a8d4d6beed37903235d8dda",
+          "scriptpubkey_asm": "OP_PUSHNUM_1 OP_PUSHBYTES_32 a86636e1c57369adc86ca6c88bcd722c06240c3d5a8d4d6beed37903235d8dda",
+          "scriptpubkey_type": "v1_p2tr",
+          "scriptpubkey_address": "bc1p4pnrdcw9wd56mjrv5myghntj9srzgrpat2x566lw6dusxg6a3hdqvtfks0",
+          "value": 136182
+        },
+        "scriptsig": "",
+        "scriptsig_asm": "",
+        "witness": [
+          "70e45903c72a8bdbbf5e8d979bb1422c5d36f5214c7f93e25a624b33c22739f1d201bb6af4d5ca65aaa7f35504e3313e0e726f1fadd5859f09abdf6fed3ea79a",
+          "20576a7b05bb160091cb176eb6f14956239c155acbe30501bad9dc8e97fef8e1dcac0063036f726401010a746578742f706c61696e00367b2270223a226272632d3230222c226f70223a226d696e74222c227469636b223a2264696f72222c22616d74223a223130303030227d68",
+          "c0576a7b05bb160091cb176eb6f14956239c155acbe30501bad9dc8e97fef8e1dc"
+        ],
+        "is_coinbase": false,
+        "sequence": 4294967293,
+        "inner_witnessscript_asm": "OP_PUSHBYTES_32 576a7b05bb160091cb176eb6f14956239c155acbe30501bad9dc8e97fef8e1dc OP_CHECKSIG OP_0 OP_IF OP_PUSHBYTES_3 6f7264 OP_PUSHBYTES_1 01 OP_PUSHBYTES_10 746578742f706c61696e OP_0 OP_PUSHBYTES_54 7b2270223a226272632d3230222c226f70223a226d696e74222c227469636b223a2264696f72222c22616d74223a223130303030227d OP_ENDIF"
+      }
+    ],
+    "vout": [
+      {
+        "value": 83082,
+        "scriptpubkey_address": "1JHPrMhXRkd5LszkpPog7wVtpGfNHur2M9",
+        "scriptpubkey_type": "p2pkh"
+      }
+    ]
+  },
+  "current_fee_rate": 0.5677966101694916,
+  "new_fee_rate": 150.0,
+  "fee_increase": 52899,
+  "total_value_redirected": 83082,
+  "original_value": 136182
+}

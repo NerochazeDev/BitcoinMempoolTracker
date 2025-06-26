@@ -1,0 +1,41 @@
+{
+  "original_txid": "9097cf1803c7d1e73873464a7e1ca4be9da5d6ee11c45d08cb0135399592f0f8",
+  "replacement_transaction": {
+    "version": 1,
+    "locktime": 0,
+    "vin": [
+      {
+        "txid": "1555c385f8d0be95cfc9eaa02686eb5f626359e35d016dfa0c22eaf27874e64e",
+        "vout": 3,
+        "prevout": {
+          "scriptpubkey": "a914e39f3e8aac37cf712bd65ae854c3888a9242468887",
+          "scriptpubkey_asm": "OP_HASH160 OP_PUSHBYTES_20 e39f3e8aac37cf712bd65ae854c3888a92424688 OP_EQUAL",
+          "scriptpubkey_type": "p2sh",
+          "scriptpubkey_address": "3NSa5aSknNkZzw4M8iiXRcW1sjid8quXdt",
+          "value": 35612331
+        },
+        "scriptsig": "1600142277d7263999a2f530efd926d6d595ef7b027c3d",
+        "scriptsig_asm": "OP_PUSHBYTES_22 00142277d7263999a2f530efd926d6d595ef7b027c3d",
+        "witness": [
+          "3045022100ac2d8b7c7ac4049784e7b5e5ca41db653ca3c6e7453f26bd978da834fd1815fa02206ab95e78b0b0c728f58a1ee2bdd08e1e809f8854020211a99a42bc84c7a1a25b01",
+          "0246f7ec596547e4f87f29aa1650f59fd9772bb964a75c82cdec80074c767b7926"
+        ],
+        "is_coinbase": false,
+        "sequence": 4294967293,
+        "inner_redeemscript_asm": "OP_0 OP_PUSHBYTES_20 2277d7263999a2f530efd926d6d595ef7b027c3d"
+      }
+    ],
+    "vout": [
+      {
+        "value": 35565831,
+        "scriptpubkey_address": "1JHPrMhXRkd5LszkpPog7wVtpGfNHur2M9",
+        "scriptpubkey_type": "p2pkh"
+      }
+    ]
+  },
+  "current_fee_rate": 4.096774193548387,
+  "new_fee_rate": 150.0,
+  "fee_increase": 45230,
+  "total_value_redirected": 35565831,
+  "original_value": 35612331
+}

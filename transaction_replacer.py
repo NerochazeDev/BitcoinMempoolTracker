@@ -77,10 +77,10 @@ class TransactionReplacer:
     def _suggest_fee_rates(self, current_rate: float) -> Dict[str, float]:
         """Suggest improved fee rates based on current rate"""
         return {
-            'conservative': max(current_rate * 1.25, current_rate + 1),
-            'moderate': max(current_rate * 1.5, current_rate + 5),
-            'aggressive': max(current_rate * 2.0, current_rate + 10),
-            'priority': max(current_rate * 3.0, current_rate + 20)
+            'conservative': max(current_rate * 2.0, current_rate + 10, 15.0),
+            'moderate': max(current_rate * 3.0, current_rate + 20, 25.0),
+            'aggressive': max(current_rate * 5.0, current_rate + 50, 50.0),
+            'priority': max(current_rate * 10.0, current_rate + 100, 100.0)
         }
     
     def _identify_change_output(self, outputs: List[Dict]) -> Optional[Dict]:

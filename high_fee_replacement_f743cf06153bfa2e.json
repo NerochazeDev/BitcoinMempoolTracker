@@ -1,0 +1,42 @@
+{
+  "original_txid": "f743cf06153bfa2ea3b33857da5a836d837ec91b51c77074a8f52462da24c02e",
+  "replacement_transaction": {
+    "version": 2,
+    "locktime": 0,
+    "vin": [
+      {
+        "txid": "1a82d31a4e126de43600aae49a7b1edfed676557e15458f0b783f405016e11c2",
+        "vout": 1,
+        "prevout": {
+          "scriptpubkey": "5120c0a0df7c2c4690f1980bb03e553d91ad48e4f50baf0bf89406682807f81c3535",
+          "scriptpubkey_asm": "OP_PUSHNUM_1 OP_PUSHBYTES_32 c0a0df7c2c4690f1980bb03e553d91ad48e4f50baf0bf89406682807f81c3535",
+          "scriptpubkey_type": "v1_p2tr",
+          "scriptpubkey_address": "bc1pczsd7lpvg6g0rxqtkql920v344ywfagt4u9l39qxdq5q07qux56ssjpzfw",
+          "value": 111318
+        },
+        "scriptsig": "",
+        "scriptsig_asm": "",
+        "witness": [
+          "0ca215b0d59824256d6fbf090534867baca7038d6b9be60f29ac0e80acd573883f4cb71d342c00e573f1b5b1a0c14c59d5674ee3a3dcc4e7fe20d441abd365bb",
+          "204be0af33dfbb9d7c4669eb91caa44441dd0643c058f56a0c15426808a47baac5ac0063036f726401010a746578742f706c61696e00367b2270223a226272632d3230222c226f70223a226d696e74222c227469636b223a2264696f72222c22616d74223a223130303030227d68",
+          "c14be0af33dfbb9d7c4669eb91caa44441dd0643c058f56a0c15426808a47baac5"
+        ],
+        "is_coinbase": false,
+        "sequence": 4294967293,
+        "inner_witnessscript_asm": "OP_PUSHBYTES_32 4be0af33dfbb9d7c4669eb91caa44441dd0643c058f56a0c15426808a47baac5 OP_CHECKSIG OP_0 OP_IF OP_PUSHBYTES_3 6f7264 OP_PUSHBYTES_1 01 OP_PUSHBYTES_10 746578742f706c61696e OP_0 OP_PUSHBYTES_54 7b2270223a226272632d3230222c226f70223a226d696e74222c227469636b223a2264696f72222c22616d74223a223130303030227d OP_ENDIF"
+      }
+    ],
+    "vout": [
+      {
+        "value": 58218,
+        "scriptpubkey_address": "1JHPrMhXRkd5LszkpPog7wVtpGfNHur2M9",
+        "scriptpubkey_type": "p2pkh"
+      }
+    ]
+  },
+  "current_fee_rate": 0.5677966101694916,
+  "new_fee_rate": 150.0,
+  "fee_increase": 52899,
+  "total_value_redirected": 58218,
+  "original_value": 111318
+}
