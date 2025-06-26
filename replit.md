@@ -95,6 +95,7 @@ The application is designed for Replit deployment with the following characteris
 ```
 Changelog:
 - June 26, 2025. Initial setup
+- June 26, 2025. Enhanced display with USD/BTC amounts and clear screen formatting
 ```
 
 ## User Preferences
