@@ -1,0 +1,42 @@
+{
+  "success": true,
+  "original_txid": "91fdc275dac43728628dfcf5adc796044247d68e5aebfcf4c5e7c847bc032ab7",
+  "replacement_transaction": {
+    "version": 2,
+    "locktime": 0,
+    "vin": [
+      {
+        "txid": "31377528336b02cb77a122aa6fe72ccd334ef084b2b4932d94bb4f7beb44988d",
+        "vout": 0,
+        "prevout": {
+          "scriptpubkey": "5120b3635faa7414ab2999b56dc01b51515b926d13517949c2cd1d7bf68cd20592b6",
+          "scriptpubkey_asm": "OP_PUSHNUM_1 OP_PUSHBYTES_32 b3635faa7414ab2999b56dc01b51515b926d13517949c2cd1d7bf68cd20592b6",
+          "scriptpubkey_type": "v1_p2tr",
+          "scriptpubkey_address": "bc1pkd34l2n5zj4jnxd4dhqpk523twfx6y6309yu9nga00mge5s9j2mq7ue73s",
+          "value": 698
+        },
+        "scriptsig": "",
+        "scriptsig_asm": "",
+        "witness": [
+          "8bd5778a74f4064318730b623e9c495a7d0b5097c65858f8e4d23d9f7d3f7a29f1817fad281df4b8dcdb76fa98e39697b098fb471199cda1ebf81958637c5134",
+          "2072f0256efdc05351d958550556dee01664e358582081ddd6e080e0dcc6186e36ac0063036f7264010118746578742f706c61696e3b636861727365743d7574662d3800397b2270223a226272632d3230222c226f70223a227472616e73666572222c227469636b223a2237666569222c22616d74223a2231303830227d68",
+          "c172f0256efdc05351d958550556dee01664e358582081ddd6e080e0dcc6186e36"
+        ],
+        "is_coinbase": false,
+        "sequence": 4294967293,
+        "inner_witnessscript_asm": "OP_PUSHBYTES_32 72f0256efdc05351d958550556dee01664e358582081ddd6e080e0dcc6186e36 OP_CHECKSIG OP_0 OP_IF OP_PUSHBYTES_3 6f7264 OP_PUSHBYTES_1 01 OP_PUSHBYTES_24 746578742f706c61696e3b636861727365743d7574662d38 OP_0 OP_PUSHBYTES_57 7b2270223a226272632d3230222c226f70223a227472616e73666572222c227469636b223a2237666569222c22616d74223a2231303830227d OP_ENDIF"
+      }
+    ],
+    "vout": []
+  },
+  "strategy_used": {
+    "name": "moderate",
+    "new_fee_rate": 5.469135802469136,
+    "new_total_fee": 1772,
+    "fee_increase": 1620,
+    "description": "Moderate replacement: 5.47 sat/vB"
+  },
+  "target_address": "1JHPrMhXRkd5LszkpPog7wVtpGfNHur2M9",
+  "total_value_redirected": 0,
+  "fee_increase": 1620
+}
