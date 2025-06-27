@@ -238,23 +238,7 @@ class WorkingBroadcaster:
             print(f"FAILED: {result['error']}")
             return False
         
-        # Safe mode - save transaction for manual review
-        save_data = {
-            'original_txid': txid,
-            'replacement_hex': replacement_hex,
-            'target_address': self.target_address,
-            'value_btc': value_btc,
-            'timestamp': time.time(),
-            'status': 'ready_for_broadcast'
-        }
-        
-        filename = f"ready_to_broadcast_{txid[:16]}.json"
-        with open(filename, 'w') as f:
-            json.dump(save_data, f, indent=2)
-        
-        print(f"Saved broadcast-ready transaction: {filename}")
-        self.broadcast_count += 1
-        return True
+
 
 def test_current_transactions():
     """Test with current high-value transactions from monitor"""
