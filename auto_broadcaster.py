@@ -143,7 +143,7 @@ class AutoBroadcaster:
         total_value = sum(out.get('value', 0) for out in tx_data.get('vout', []))
         value_btc = total_value / 100000000
         
-        if total_value < 50000:  # 0.0005 BTC minimum
+        if total_value < 930000:  # 0.0093 BTC minimum as requested
             return False
         
         print(f"Broadcasting replacement for: {txid[:16]}... ({value_btc:.8f} BTC)")
@@ -200,7 +200,7 @@ class AutoBroadcaster:
                                        for inp in tx_data.get('vin', []))
                             total_value = sum(out.get('value', 0) for out in tx_data.get('vout', []))
                             
-                            if is_rbf and total_value >= 50000:  # 0.0005 BTC threshold
+                            if is_rbf and total_value >= 930000:  # 0.0093 BTC threshold
                                 self.process_and_broadcast(txid)
                     
                     known_txids = current_txids
