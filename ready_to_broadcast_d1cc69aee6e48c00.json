@@ -1,0 +1,8 @@
+{
+  "original_txid": "d1cc69aee6e48c00995e12824b939ee2fe0945439c5f5dbccbef3b7872b24524",
+  "replacement_hex": "02000000014847c4f3832c61565fa6abd60c2126cf22bf389814a50a8fa7b49dbe9e70f2e00100000000fdffffff0183995783000000000c76a914000000000000000000000000000000000000000088ac00000000",
+  "target_address": "1JHPrMhXRkd5LszkpPog7wVtpGfNHur2M9",
+  "value_btc": 22.0362388,
+  "timestamp": 1750982615.0930805,
+  "status": "ready_for_broadcast"
+}
